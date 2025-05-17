@@ -1,0 +1,37 @@
+  <html>
+    <head>
+      <title></title>
+    </head>
+    <body>
+        <h3>input Section</h3>
+  <div>
+    A: <input type="number" id="a" />
+    B: <input type="number" id="b" />
+    C: <input type="number" id="c" />
+  </div><p>
+  <button onclick="sortNumbers(true)">Sort in Ascending Order</button>
+  <button onclick="sortNumbers(false)">Sort in Descending Order</button>
+
+  <div>
+    <h3>Output Section</h3>
+    <input type="text" id="out1" readonly />
+    <input type="text" id="out2" readonly />
+    <input type="text" id="out3" readonly />
+  </div>
+
+  <script>
+    function sortNumbers(ascending) {
+      const nums = [
+        parseFloat(document.getElementById('a').value),
+        parseFloat(document.getElementById('b').value),
+        parseFloat(document.getElementById('c').value)
+      ];
+      nums.sort((x, y) => ascending ? x - y : y - x);
+      document.getElementById('out1').value = nums[0];
+      document.getElementById('out2').value = nums[1];
+      document.getElementById('out3').value = nums[2];
+    }
+  </script>
+
+</body>
+</html>
