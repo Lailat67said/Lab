@@ -1,0 +1,137 @@
+<html>
+<head>
+  <title>Pizza Order Form</title>
+  <script>
+    function validateForm() {
+      var fullName = document.getElementById("fullName").value.trim();
+      var address = document.getElementById("address").value.trim();
+      var phone = document.getElementById("phone").value.trim();
+      var email = document.getElementById("email").value.trim();
+      var password = document.getElementById("password").value.trim();
+      var cardType = document.getElementById("cardType").value;
+      var cardNumber = document.getElementById("cardNumber").value.trim();
+      var cardName = document.getElementById("cardName").value.trim();
+      var pizzaSize = document.getElementById("pizzaSize").value;
+      var quantity = document.getElementById("quantity").value.trim();
+      var spices = document.querySelectorAll('input[name="spices"]:checked');
+      var meat = document.querySelector('input[name="meat"]:checked');
+
+      if (fullName === "") {
+        alert("Please enter your full name.");
+        return false;
+      }
+
+      if (address === "") {
+        alert("Please enter your street address.");
+        return false;
+      }
+
+      if (!/^\d{10}$/.test(phone)) {
+        alert("Phone number must be exactly 10 digits.");
+        return false;
+      }
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+
+      if (password.length < 5 || password.length > 15) {
+        alert("Password must be between 5 and 15 characters.");
+        return false;
+      }
+
+      if (cardType === "") {
+        alert("Please select a card type.");
+        return false;
+      }
+
+      if (cardNumber === "") {
+        alert("Please enter your card number.");
+        return false;
+      }
+
+      if (cardName === "") {
+        alert("Please enter the name on the card.");
+        return false;
+      }
+
+      if (spices.length === 0) {
+        alert("Please select at least one spice.");
+        return false;
+      }
+
+      if (pizzaSize === "") {
+        alert("Please select a pizza size.");
+        return false;
+      }
+
+      if (quantity === "" || isNaN(quantity) || quantity <= 0) {
+        alert("Please enter a valid quantity.");
+        return false;
+      }
+
+      if (!meat) {
+        alert("Please select a meat option.");
+        return false;
+      }
+
+      alert("Order placed successfully!");
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <h2>PIZZA ORDER FORM</h2>
+  <form onsubmit="return validateForm();">
+    <fieldset>
+      <legend>Delivery Address</legend>
+      Full Name: <input type="text" id="fullName"><br><br>
+      Street Address: <input type="text" id="address"><br><br>
+      Phone: <input type="text" id="phone"><br><br>
+      Email: <input type="text" id="email"><br><br>
+      Password: <input type="password" id="password"><br>
+    </fieldset><br>
+
+    <fieldset>
+      <legend>Payment Information</legend>
+      Card Type:
+      <select id="cardType">
+        <option value="">Select Card</option>
+        <option value="Visa">Visa</option>
+        <option value="MasterCard">MasterCard</option>
+        <option value="Amex">Amex</option>
+      </select><br><br>
+      Card Number: <input type="text" id="cardNumber"><br><br>
+      Name on Card: <input type="text" id="cardName"><br>
+    </fieldset><br>
+
+    <fieldset>
+      <legend>Customize Your Pizza</legend>
+      Pizza Size:
+      <select id="pizzaSize">
+        <option value="">Select Size</option>
+        <option value="Small">Small</option>
+        <option value="Medium">Medium</option>
+        <option value="Large">Large</option>
+      </select><br><br>
+      Quantity: <input type="text" id="quantity"><br><br>
+      Spices:<br>
+      <input type="checkbox" name="spices" value="Black pepper">Black pepper
+      <input type="checkbox" name="spices" value="Bell peppers">Bell peppers
+      <input type="checkbox" name="spices" value="Mayonnaise">Mayonnaise<br><br>
+      Meat:<br>
+      <input type="radio" name="meat" value="Fish">Fish
+      <input type="radio" name="meat" value="Cow">Cow
+      <input type="radio" name="meat" value="Chicken">Chicken<br><br>
+      Other Requirements:<br>
+      <textarea id="otherReq" rows="4" cols="30"></textarea><br>
+    </fieldset><br>
+
+    <input type="submit" value="Place Order">
+    <input type="reset" value="Clear Order">
+  </form>
+</body>
+</html>
+
+
