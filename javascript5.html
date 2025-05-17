@@ -1,0 +1,87 @@
+<html>
+<head>
+  <title>Send Message</title>
+  <style>
+    body {
+      font-family: Arial;
+    }
+    form {
+      width: 300px;
+      background: #f0f0f0;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    input, textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background: black;
+      color: white;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Send Message</h2>
+<form id="messageForm">
+  <input type="text" id="name" placeholder="Name" />
+  <input type="email" id="email" placeholder="Email" />
+  <textarea id="message" placeholder="Message"></textarea>
+  <button type="submit">Send Message</button>
+  <div class="error" id="errorMsg"></div>
+</form>
+
+<script>
+  const form = document.getElementById("messageForm");
+  const nameInput = document.getElementById("name");
+  const emailInput = document.getElementById("email");
+  const messageInput = document.getElementById("message");
+  const errorMsg = document.getElementById("errorMsg");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    // Clear previous error
+    errorMsg.textContent = "";
+
+    // Validation
+    let error = "";
+    if (!nameInput.value.trim()) error += "Name is required. ";
+    if (!emailInput.value.trim()) error += "Email is required. ";
+    if (!messageInput.value.trim()) error += "Message is required.";
+
+    if (error) {
+      errorMsg.textContent = error;
+
+      setTimeout(() => {
+        errorMsg.textContent = "";
+        nameInput.style.borderColor = emailInput.style.borderColor = messageInput.style.borderColor = "#ccc";
+      }, 3000);
+
+      return;
+    }
+
+    const data = {
+      name: nameInput.value,
+      email: emailInput.value,
+      message: messageInput.value
+    };
+
+    console.log("Form data:", data);
+  });
+</script>
+
+</body>
+</html>
