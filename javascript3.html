@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title></title>
+    <body>
+        <script>
+            function  circle (radius){
+                this.radius = radius;
+
+            this.getArea=function(){
+                return Math.PI*this.radius*this.radius;
+            };
+            this.getParameter=function(){
+                return 2*Math.PI*this.radius;
+            };
+        }
+        let circ1 = new circle(11);
+        console.log(circ1.getArea());
+        
+        let circ2 = new circle(4.44);
+        console.log(circ2.getParameter());
+        </script>
+        </head>
+    </body>
+</html>
