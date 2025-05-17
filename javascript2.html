@@ -1,0 +1,30 @@
+<html>
+    <head>
+    <title></title>
+    </head>
+    
+    <body>
+    1st Number: <input type="number" id="num1" /><p>
+    2nd Number: <input type="number" id="num2" /><p>
+    <button onclick="calculate('multiply')">Multiply</button>
+    <button onclick="calculate('divide')">Divide</button>
+    <p>The Result Is: <span id="result"></span></p>
+  
+    <script>
+      function calculate(operation) {
+        const num1 = parseFloat(document.getElementById("num1").value);
+        const num2 = parseFloat(document.getElementById("num2").value);
+        let result;
+        if (operation === "multiply") {
+          result = num1 * num2;
+        } else if (operation === "divide") {
+          if (num2 !== 0) result = num1 / num2;
+          else result = "Cannot divide by 0";
+        }
+        document.getElementById("result").textContent = result;
+      }
+    </script>
+    </body>
+    </html>
+  
+  
